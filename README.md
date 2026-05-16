@@ -389,3 +389,44 @@ For strict offline mode:
 - [ ] Audit/reporting package is complete for each test session.
 
 If all boxes are checked, the system is a true **complete package** from acquisition to annotation to final AI crack detection.
+
+
+## 12) Missing Items Checklist Before Build & Deployment on PC
+Before you start implementation on a real PC, confirm these items are closed. If any are open, they are the true blockers.
+
+### A) Requirements Freeze (Must-Have)
+- [ ] Finalize measurable acceptance KPIs (onset recall, MAE, false alarms/shift, max latency).
+- [ ] Freeze alarm thresholds/escalation policy with lab safety stakeholders.
+- [ ] Confirm supported camera models and UTM telemetry interface contract.
+
+### B) Data & Labeling Readiness
+- [ ] Pilot dataset collected (minimum representative sessions: no-crack → initiation → growth).
+- [ ] Label handbook approved (edge cases: glare, scratches, branching cracks).
+- [ ] Annotation QA protocol approved (double-annotation percentage + reviewer signoff).
+
+### C) Deployment Readiness on Target PC
+- [ ] OS image and patch level frozen (Windows/Ubuntu standard image).
+- [ ] Offline/online deployment profile selected (LAN, standalone offline, or hybrid).
+- [ ] Storage sizing validated against expected daily video volume and retention days.
+- [ ] Backup/restore dry-run completed.
+
+### D) Runtime & Integration Readiness
+- [ ] Camera driver stability test completed for continuous run duration.
+- [ ] UTM sync integration test passed (timestamp alignment verified).
+- [ ] End-to-end latency smoke test passed on target PC hardware.
+- [ ] Audio/visual alarm validation completed with operator acknowledgment workflow.
+
+### E) Security, Audit, and SOP Readiness
+- [ ] User roles and account lifecycle defined (operator/engineer/admin).
+- [ ] Audit log fields finalized (login, alarm ack, model switch, calibration run).
+- [ ] Startup/shutdown/calibration SOP documents approved.
+- [ ] Incident response SOP approved (what to do when system flags critical crack growth).
+
+### F) Go-Live Control
+- [ ] Shadow-mode trial completed (recommended 1–2 weeks).
+- [ ] KPI signoff from engineering + lab operations.
+- [ ] Rollback plan tested (previous model/config restore under 15 minutes).
+
+### Practical Answer
+If all boxes above are checked, you are ready to build and deploy on PC with controlled risk.
+If not, those unchecked boxes are the missing items to close first.
