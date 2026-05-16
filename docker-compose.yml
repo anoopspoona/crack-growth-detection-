@@ -1,0 +1,7 @@
+services:
+  crack-growth-api:
+    build: .
+    container_name: crack-growth-api
+    ports:
+      - "8080:8080"
+    restart: unless-stopped

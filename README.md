@@ -42,3 +42,44 @@ API docs: `http://localhost:8080/docs`
 2. Add real YOLO + segmentation inference service.
 3. Replace in-memory store with PostgreSQL and object storage.
 4. Add web frontend for operator and reviewer workflows.
+
+
+## Can I deploy the web application now?
+**Yes — you can deploy the backend service now for pilot usage.**
+
+Current deployable scope:
+- REST API for sessions, frame ingest, annotation task lifecycle, alerts, and KPI checks.
+- OpenAPI docs at `/docs` for immediate integration.
+
+Not yet production-complete:
+- No real camera stream worker yet (current frame ingest is API-driven metadata).
+- No persistent database/object storage yet (in-memory data resets on restart).
+- No browser frontend yet (API is ready for frontend integration).
+
+### Option 1: Run directly on PC
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --host 0.0.0.0 --port 8080
+```
+
+### Option 2: Deploy with Docker
+```bash
+docker compose up -d --build
+```
+
+Then open:
+- API docs: `http://<PC-IP>:8080/docs`
+- Health: `http://<PC-IP>:8080/health`
+
+### Minimum pre-deployment checklist (now)
+- Python 3.11+ or Docker installed on target PC.
+- Port `8080` open on local firewall for remote access from another PC.
+- Camera/UTM integration plan ready for next step implementation.
+
+### Recommended next milestone before production
+1. Add camera ingestion worker (OpenCV/GStreamer).
+2. Add PostgreSQL + persistent storage.
+3. Add YOLO/segmentation inference service.
+4. Add operator web frontend + authentication.
